@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/fragment_border"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/accent"
+            android:textSize="20sp"
+            android:text="Catatan Ku"/>
+
+
+        <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+            android:id="@+id/txtCatatanNama"
+            style="@style/myEditTextForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Nama Catatan"
+            android:maxLines="2"
+            android:textSize="20sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/btnCatatanAttach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@null"
+                android:textSize="13sp"
+                app:srcCompat="@drawable/ic_attach_file_gray_24px" />
+
+            <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/btnCatatanAttach"
+                android:background="@null"
+                android:textColor="@color/black_overlay"
+                android:text=""
+                android:id="@+id/lblCatatanFileName"/>
+
+        </RelativeLayout>
+
+    <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black_overlay"
+        android:textColorHint="@color/black_overlay"
+        style="@style/myEditTextForm"
+        android:id="@+id/txtWaktuCatatan"
+        android:hint="Waktu"/>
+    <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtDeskripsiCatatan"
+        style="@style/myEditTextForm"
+        android:elegantTextHeight="true"
+        android:textColor="@color/black_overlay"
+        android:textColorHint="@color/black_overlay"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/btnCatatanAttach"
+        android:lines="3"
+        android:hint="Deskripsi"/>
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCatatanSimpan"
+        app:srcCompat="@drawable/ic_done_white_24px"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

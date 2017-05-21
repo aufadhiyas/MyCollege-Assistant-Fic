@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/guillotine_background"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar21"
+        style="@style/Toolbar"
+        app:contentInsetStart="0dp"
+        android:weightSum="1">
+
+        <ImageButton
+            android:id="@+id/btntoolbarkembali"
+            style="@style/ImageView.Hamburger"
+            app:srcCompat="@drawable/ic_arrow_back_white_24px" />
+
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Pengaturan"
+            android:textStyle="bold"
+            android:textSize="@dimen/guillotine_item_text_size"/>
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:orientation="vertical">
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Backup Google Drive"
+            android:layout_marginBottom="10dp"
+            android:textSize="20sp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lblset12"
+                android:text="Backup Folder"/>
+            <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text=""
+                android:id="@+id/Folder"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lblset1"
+                android:text="Terakhir Backup"/>
+            <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="17/05/2017 20:40"
+                android:id="@+id/spLastSync"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+            <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Backup"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"
+                android:id="@+id/spbtnSync"
+                android:text="Backup Now"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+            <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Backup"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"
+                android:id="@+id/spbtnRes"
+                android:text="Restore Now"/>
+        </RelativeLayout>
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Notifikasi Pengingat"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+            <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingatkan Sebelum"/>
+            <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="5 Menit"
+                android:id="@+id/spMenitNotif"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Status Notifikasi"/>
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:id="@+id/spNotifikasi"/>
+        </RelativeLayout>
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="Notifikasi Hari Besar"/>
+        <android.support.v7.widget.SwitchCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:id="@+id/spHaribesar"/>
+    </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_frm_jadwal_kuliah"
+    android:background="@drawable/fragment_border"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context="me.citrafa.mycollegeassistant.Activity.Fragment.frmJadwalKuliah">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/accent"
+            android:textSize="20sp"
+            android:maxLines="2"
+            android:text="Jadwal Kuliahku"/>
+        <android.support.v7.widget.AppCompatSpinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/mySpinner"
+            android:layout_marginTop="20dp"
+            android:entries="@array/hari"
+            android:id="@+id/spinnerHari"/>
+        <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:id="@+id/txtMakul"
+            style="@style/myEditTextForm"
+            android:hint="Nama Matakuliah"/>
+        <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:id="@+id/txtRuangan"
+            style="@style/myEditTextForm"
+            android:hint="Ruangan Kuliah"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="16sp"
+                android:id="@+id/txtJam"
+                style="@style/myEditTextForm"
+                android:hint="Jam Kuliah"/>
+            <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="16sp"
+                android:id="@+id/txtKelas"
+                style="@style/myEditTextForm"
+                android:hint="Kelas"/>
+        </LinearLayout>
+        <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:id="@+id/txtDosen"
+            style="@style/myEditTextForm"
+            android:hint="Nama Dosen"/>
+
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSimpan"
+        app:srcCompat="@drawable/ic_done_white_24px"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

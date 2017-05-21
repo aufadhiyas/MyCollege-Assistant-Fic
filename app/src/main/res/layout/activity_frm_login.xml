@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/guillotine_background"
+    tools:context="me.citrafa.mycollegeassistant.Activity.frmLogin">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@null"
+        android:layout_height="wrap_content">
+
+
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/loginIcon"
+        app:srcCompat="@mipmap/iconapp"/>
+
+    <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+        android:id="@+id/loginEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_email_gray_18px"
+        android:drawablePadding="4dp"
+        android:drawableTint="@color/action_icon_color"
+        android:layout_below="@id/loginIcon"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:minWidth="300dp" />
+
+    <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+        android:id="@+id/loginPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_alignLeft="@+id/loginEmail"
+        android:layout_alignStart="@+id/loginEmail"
+        android:layout_below="@+id/loginEmail"
+        android:drawableLeft="@drawable/ic_key_gray_18px"
+        android:drawablePadding="4dp"
+        android:drawableTint="@color/action_icon_color"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:minWidth="300dp" />
+    <me.citrafa.mycollegeassistant.CustomWidget.btnMuseo
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/loginPass"
+        style="@style/myButton"
+        android:layout_centerHorizontal="true"
+        android:text="Login"
+        android:minWidth="300dp"
+        android:id="@+id/loginBtnLogin"/>
+    <me.citrafa.mycollegeassistant.CustomWidget.btnMuseo
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        style="@style/myButton2"
+        android:minWidth="300dp"
+        android:layout_below="@id/loginBtnLogin"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/loginBtnDaftar"
+        android:text="Daftar"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/loginBtnDaftar"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true">
+
+    </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

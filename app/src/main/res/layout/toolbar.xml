@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbars"
+        app:contentInsetStart="0dp"
+        style="@style/Toolbar">
+
+        <ImageView
+            android:id="@+id/toolbarbtn"
+            style="@style/ImageView.Hamburger"
+            android:src="@mipmap/ic_menu_90" />
+
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Dashboard"
+            android:textSize="@dimen/guillotine_item_text_size" />
+    </android.support.v7.widget.Toolbar>
+
+</LinearLayout>

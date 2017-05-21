@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/guillotine_background"
+    android:id="@+id/fragmentmenuCatatan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/content_catatan"/>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_add_white_24px"
+        app:layout_behavior="me.citrafa.mycollegeassistant.CustomWidget.ScrollingFABBehavior"
+        android:id="@+id/fabAddCatatan"
+        android:layout_gravity="end|bottom"/>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/myCardview"
+        app:contentPadding="4dp"
+        app:cardCornerRadius="3dp"
+        android:padding="10dp">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.AppCompatImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_more_gray_24px"
+                android:id="@+id/rowTugasMoreBtn"
+                android:background="@null"
+                android:layout_alignParentRight="true"/>
+
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentLeft="true"
+            android:maxLines="1"
+            android:layout_marginBottom="5dp"
+            android:textColor="#3b3b3b"
+            android:text="Nama Mata Kuliahasdasda"
+            android:id="@+id/rowTugasMakul"/>
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rowTugasMakul"
+            android:textColor="#3b3b3b"
+            android:layout_marginBottom="5dp"
+            android:text="Sabtu 17/08/1992 17:08"
+            android:id="@+id/rowTugasWaktu"/>
+            <android.support.v7.widget.AppCompatImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_insert_drive_file_gray_24px"
+                android:layout_below="@id/rowTugasMakul"
+                android:id="@+id/rowTugasFilebtn"/>
+            <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rowTugasFileName"
+                android:layout_toLeftOf="@id/rowTugasFilebtn"
+                android:textColor="#3b3b3b"
+                android:layout_alignParentLeft="true"
+                android:textStyle="italic"
+                android:text=""
+                android:visibility="gone"
+                android:layout_below="@id/rowTugasWaktu"/>
+
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rowTugasFileName"
+            android:layout_toLeftOf="@id/rowTugasFilebtn"
+            android:layout_alignParentLeft="true"
+            android:maxLines="2"
+            android:textColor="#3b3b3b"
+            android:text="Deskrtpsi"
+            android:id="@+id/rowTugasDeskripsi" />
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

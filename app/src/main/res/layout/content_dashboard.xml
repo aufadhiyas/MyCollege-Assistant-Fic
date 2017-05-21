@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_dashboard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="@color/guillotine_background"
+    tools:context="me.citrafa.mycollegeassistant.Activity.Dashboard">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:id="@+id/imgWeather"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:minWidth="40dp"
+            android:minHeight="40dp"
+            app:srcCompat="@drawable/ic_moon"
+            android:layout_alignParentRight="true"/>
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:id="@+id/celciusWeather"
+            android:text=""/>
+    </LinearLayout>
+
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/ic_notifications_black_24dp"
+        android:id="@+id/dashboardIcon"/>
+    <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/dashboardIcon"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:text="01:12:09"
+        android:id="@+id/TimeRemainingDahsboard"/>
+    <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TimeRemainingDahsboard"
+        android:layout_centerInParent="true"
+        android:textSize="18sp"
+        android:text="Rapat Hmjti"
+        android:id="@+id/namaKegiatan"/>
+
+</RelativeLayout>
+

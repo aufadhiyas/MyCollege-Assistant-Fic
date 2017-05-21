@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@+id/cardviewJU"
+    style="@style/myCardview"
+    android:padding="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content">
+
+
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#3b3b3b"
+            android:textSize="18sp"
+            android:id="@+id/rowJUWaktu"
+            android:text="Waktu Ujian"/>
+
+        <ImageButton
+            android:id="@+id/btnMenuJadwalUjian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            app:srcCompat="@drawable/ic_more_gray_24px" />
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rowJUWaktu"
+            android:textColor="#3b3b3b"
+            android:id="@+id/rowJUJenisUjian"
+            android:text="PRETEST"/>
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rowJUJenisUjian"
+            android:textColor="#3b3b3b"
+            android:id="@+id/rowJUMakul"
+            android:text="Mata Kuliah"/>
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/rowJUWaktu"
+            android:textColor="#3b3b3b"
+            android:layout_toRightOf="@id/rowJUJenisUjian"
+            android:id="@+id/rowJURuangan"
+            android:text="Ruangan"/>
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rowJUDeskripsi"
+            android:textColor="#3b3b3b"
+            android:layout_below="@id/rowJUMakul"
+            android:text="Deskripsi Ujian"/>
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>

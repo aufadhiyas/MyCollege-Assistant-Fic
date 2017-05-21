@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@drawable/fragment_border">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/accent"
+            android:textSize="20sp"
+            android:maxLines="2"
+            android:text="Jadwal Lainku"/>
+        <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:id="@+id/txtNamaJl"
+            style="@style/myEditTextForm"
+            android:hint="Nama Jadwal"/>
+        <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:id="@+id/txtWaktuJlS"
+            style="@style/myEditTextForm"
+            android:hint="Waktu Mulai"/>
+        <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:id="@+id/txtWaktuJlF"
+            style="@style/myEditTextForm"
+            android:hint="Waktu Mulai"/>
+        <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:id="@+id/txtTempatJl"
+            style="@style/myEditTextForm"
+            android:hint="Tempat"/>
+        <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:id="@+id/txtDeskripsiJl"
+            style="@style/myEditTextForm"
+            android:hint="Deskripsi"/>
+
+    </LinearLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSimpanJl"
+        app:srcCompat="@drawable/ic_done_white_24px"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"/>
+
+
+</RelativeLayout>

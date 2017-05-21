@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "744445465922",
+    "firebase_url": "https://mycollege-assistants.firebaseio.com",
+    "project_id": "mycollege-assistants",
+    "storage_bucket": "mycollege-assistants.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744445465922:android:bca7f0998c9c5ee2",
+        "android_client_info": {
+          "package_name": "me.citrafa.mycollegeassistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744445465922-r77vrvimglk0k0lkmotkj56cdg1gupml.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.citrafa.mycollegeassistant",
+            "certificate_hash": "974e6f195fbbdf368ec5dc6bb5ce30488f11ba56"
+          }
+        },
+        {
+          "client_id": "744445465922-go2ekals3mllrhpm8j42nat6he1nltr6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_rpait_tfiaew0CuuWwD4BnavNPRB_Mw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744445465922-go2ekals3mllrhpm8j42nat6he1nltr6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/fragment_border"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/accent"
+            android:textSize="20sp"
+            android:maxLines="2"
+            android:text="Tugas"/>
+
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            android:layout_height="wrap_content"
+            android:text="Nama Mata Kuliah"
+            android:id="@+id/lblMakulTugas"/>
+        <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            android:text="Waktu"
+            android:id="@+id/lblWaktuMakulTugas"/>
+        <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            style="@style/myEditTextForm"
+            android:maxLines="2"
+            android:hint="Deskripsi Tugas"
+            android:id="@+id/txtDeskripsiTugas"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_attach_file_gray_24px"
+                android:background="@null"
+                android:id="@+id/btnBrowseFileTugas"/>
+            <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/btnBrowseFileTugas"
+                android:textColor="#000000"
+                android:maxLines="1"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/lblFileTugas"
+                android:text=""/>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <Switch
+                android:id="@+id/switchWaktuKumpulTugas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="0" />
+            <me.citrafa.mycollegeassistant.CustomWidget.tvMuseo
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:layout_marginLeft="10dp"
+                android:textSize="14dp"
+                android:id="@+id/lblSwitchTugas"/>
+        </LinearLayout>
+
+
+        <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtWaktuKumpulTugas"
+            android:layout_marginTop="10dp"
+            style="@style/myEditTextForm"
+            android:hint="Waktu Pengumpulan"/>
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSimpanTugas"
+        app:srcCompat="@drawable/ic_done_white_24px"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

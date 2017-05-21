@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragmentmenuJadwalLain"
+    android:layout_width="match_parent"
+    android:background="@color/guillotine_background"
+    android:layout_height="match_parent"
+    tools:context=".Activity.Fragment.menuJadwalLain">
+
+<include layout="@layout/content_jadwal_lain"/>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fabAddJadwalLain"
+        app:srcCompat="@drawable/ic_add_white_24px"
+        app:layout_anchor="@+id/recyclerJL"
+        app:layout_anchorGravity="bottom|end"/>
+</android.support.design.widget.CoordinatorLayout>
