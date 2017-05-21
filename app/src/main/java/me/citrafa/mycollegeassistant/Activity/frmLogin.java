@@ -1,8 +1,14 @@
 package me.citrafa.mycollegeassistant.Activity;
 
+import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +33,7 @@ import me.citrafa.mycollegeassistant.CustomWidget.btnMuseo;
 import me.citrafa.mycollegeassistant.CustomWidget.etMuseo;
 import me.citrafa.mycollegeassistant.CustomWidget.jToast;
 import me.citrafa.mycollegeassistant.R;
+import me.citrafa.mycollegeassistant.Service.GPSTracker;
 import me.citrafa.mycollegeassistant.WebService.WebUrl;
 
 public class frmLogin extends AppCompatActivity{
@@ -38,6 +45,10 @@ public class frmLogin extends AppCompatActivity{
     @BindView(R.id.loginBtnDaftar) btnMuseo btnDaftar;
     ProgressDialog pDialog;
     SessionManager s;
+    String provider;
+    LocationManager locationManager;
+    private static final int REQUEST_PERMISSIONS = 20;
+    int MY_PERMISSION = 0;
 
     String Email,Password;
 
@@ -48,6 +59,30 @@ public class frmLogin extends AppCompatActivity{
         ButterKnife.bind(this);
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        provider = locationManager.getBestProvider(new Criteria(), false);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+
+            ActivityCompat.requestPermissions(frmLogin.this, new String[]{
+                    Manifest.permission.INTERNET,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_NETWORK_STATE,
+                    Manifest.permission.SYSTEM_ALERT_WINDOW,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+
+
+            }, MY_PERMISSION);
+        }
+        GPSTracker gps = new GPSTracker(this);
+        if(gps.canGetLocation()){
+
+        }else {
+            gps.showSettingsAlert();
+        }
         s = new SessionManager(getApplicationContext());
 
         btnLogin.setOnClickListener(new View.OnClickListener() {

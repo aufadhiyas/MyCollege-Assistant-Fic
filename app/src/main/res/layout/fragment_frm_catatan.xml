@@ -76,6 +76,10 @@
         android:textColorHint="@color/black_overlay"
         style="@style/myEditTextForm"
         android:id="@+id/txtWaktuCatatan"
+        android:windowSoftInputMode="stateAlwaysHidden"
+        android:focusable="false"
+        android:cursorVisible="false"
+        android:editable="false"
         android:hint="Waktu"/>
     <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
         android:layout_width="match_parent"

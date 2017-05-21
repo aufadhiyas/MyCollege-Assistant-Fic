@@ -93,7 +93,7 @@ public class menuTugas extends Fragment {
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerTugas);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new AdapterTugasRV(data, jkm);
+        adapter = new AdapterTugasRV(this,data, jkm);
         recyclerView.setAdapter(adapter);
         recyclerView.getRecycledViewPool().clear();
         adapter.notifyDataSetChanged();

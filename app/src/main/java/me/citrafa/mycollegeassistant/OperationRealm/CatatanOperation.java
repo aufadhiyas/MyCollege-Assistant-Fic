@@ -9,9 +9,7 @@ import java.util.Date;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import me.citrafa.mycollegeassistant.ModelClass.CatatanModel;
-import me.citrafa.mycollegeassistant.ModelClass.CatatanModel;
 import me.citrafa.mycollegeassistant.ModelClass.DateStorageModel;
-import me.citrafa.mycollegeassistant.ModelClass.JadwalKuliahModel;
 
 /**
  * Created by SENSODYNE on 22/04/2017.
@@ -22,6 +20,10 @@ public class CatatanOperation {
     RealmBaseActivity rba;
     Realm realm;
     CatatanModel cm;
+
+    public CatatanOperation(){
+
+    }
 
     public void tambahCatatan(final CatatanModel obj){
         realm = Realm.getDefaultInstance();
@@ -132,6 +134,7 @@ public class CatatanOperation {
                                       }
         );
     }
+
     public int getIdDate(){
         realm = Realm.getDefaultInstance();
         Number number = realm.where(DateStorageModel.class).max("id");

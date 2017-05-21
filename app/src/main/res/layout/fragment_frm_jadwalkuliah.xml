@@ -54,6 +54,10 @@
                 android:layout_marginTop="10dp"
                 android:textSize="16sp"
                 android:id="@+id/txtJam"
+                android:windowSoftInputMode="stateAlwaysHidden"
+                android:focusable="false"
+                android:cursorVisible="false"
+                android:editable="false"
                 style="@style/myEditTextForm"
                 android:hint="Jam Kuliah"/>
             <me.citrafa.mycollegeassistant.CustomWidget.etMuseo

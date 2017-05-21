@@ -9,9 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.TimePicker;
 
 import java.text.ParseException;
@@ -22,7 +20,9 @@ import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.Realm;
 import me.citrafa.mycollegeassistant.AppController.SessionManager;
+import me.citrafa.mycollegeassistant.CustomWidget.LibraryDateCustom;
 import me.citrafa.mycollegeassistant.CustomWidget.etMuseo;
 import me.citrafa.mycollegeassistant.ModelClass.JadwalLainModel;
 import me.citrafa.mycollegeassistant.OperationRealm.JadwalLainOperation;
@@ -41,6 +41,7 @@ public class frmJadwalLain extends Fragment {
     @BindView(R.id.btnSimpanJl) FloatingActionButton btnSimpan;
     JadwalLainOperation JLO;
     SessionManager session;
+    LibraryDateCustom LDC;
     int id,mYear,mMonth,mDay,mHour,mMinute;String uid,nama,tempat,deskripsi,author;
     Date dateS,dateF,created_at,updated_at;
 
@@ -49,6 +50,7 @@ public class frmJadwalLain extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         id = getArguments().getInt("idJL",0);
         JLO = new JadwalLainOperation();
+        LDC = new LibraryDateCustom();
         session = new SessionManager(getActivity());
         return inflater.inflate(R.layout.fragment_frm_jadwal_lain, container, false);
     }
@@ -57,6 +59,9 @@ public class frmJadwalLain extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this,view);
+        if (id!=0){
+            initData(id);
+        }
         txtWaktus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +99,20 @@ public class frmJadwalLain extends Fragment {
             JLO.editJadwalLain(jml);
         }
     }
-
+    private void initData(int i){
+        Realm realm;
+        realm = Realm.getDefaultInstance();
+        JadwalLainModel jl = realm.where(JadwalLainModel.class).equalTo("no_jl",i).findFirst();
+        if (jl!=null){
+            txtNama.setText(jl.getNama_jl());
+            txtDeskripsi.setText(jl.getDeskripsi_jl());
+            txtTempat.setText(jl.getTempat_jl());
+            txtWaktuf.setText(LDC.getHariDariWaktu(jl.getWaktuf_jl())+""+LDC.getHariDariWaktu(jl.getWaktuf_jl()));
+            txtWaktus.setText(LDC.getHariDariWaktu(jl.getWaktus_jl())+""+LDC.getHariDariWaktu(jl.getWaktus_jl()));
+            dateS = jl.getWaktus_jl();
+            dateF = jl.getWaktuf_jl();
+        }
+    }
 
     public static Date getCurrentTimeStamp(){
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//dd/MM/yyyy

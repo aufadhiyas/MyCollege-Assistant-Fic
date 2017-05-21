@@ -1,22 +1,17 @@
 package me.citrafa.mycollegeassistant.Activity.Fragment;
 
 import android.app.TimePickerDialog;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatSpinner;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,6 +21,7 @@ import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.Realm;
 import me.citrafa.mycollegeassistant.AppController.SessionManager;
 import me.citrafa.mycollegeassistant.CustomWidget.AdapterSpinner;
 import me.citrafa.mycollegeassistant.CustomWidget.etMuseo;
@@ -71,6 +67,9 @@ public class frmJadwalKuliah extends Fragment implements AdapterView.OnItemSelec
         AdapterSpinner as = new AdapterSpinner(getActivity(),hariSS);
         spHari.setAdapter(as);
         spHari.setOnItemSelectedListener(this);
+        if (id!=0){
+            initData(id);
+        }
         session = new SessionManager(getActivity());
         txtJam.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +80,12 @@ public class frmJadwalKuliah extends Fragment implements AdapterView.OnItemSelec
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                simpanData(id);
+                if (txtJam.getText()!=null&&txtRuangan.getText()!=null&&txtDosen.getText()!=null&&txtMakul.getText()!=null){
+                    simpanData(id);
+                }else {
+                    Toast.makeText(getActivity(), "Tidak boleh ada yang kosong ya !", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
@@ -89,7 +93,7 @@ public class frmJadwalKuliah extends Fragment implements AdapterView.OnItemSelec
     public void simpanData(int idn){
         int ids = ids(idn);
         uid = uuid();
-        String harijadi = hari;
+        String harijadi = "senin";
         nohari = noHariMen();
         makul = txtMakul.getText().toString();
         ruangan = txtRuangan.getText().toString();
@@ -101,9 +105,28 @@ public class frmJadwalKuliah extends Fragment implements AdapterView.OnItemSelec
         if (idn == 0){
             JadwalKuliahModel jk = new JadwalKuliahModel(ids,uid,harijadi,nohari,dates,datef,makul,ruangan,dosen,kelas,true,author,created_at,updated_at);
             opJK.tambahJadwalKuliah(jk);
+            getActivity().getFragmentManager().popBackStack();
         }else{
             JadwalKuliahModel jk = new JadwalKuliahModel(ids,harijadi,nohari,dates,datef,makul,ruangan,dosen,kelas,true,author,updated_at);
             opJK.editJadwalKuliah(jk);
+            getActivity().getFragmentManager().popBackStack();
+        }
+    }
+    private void initData(int i){
+        Realm realm;
+        realm = Realm.getDefaultInstance();
+        JadwalKuliahModel cm = realm.where(JadwalKuliahModel.class).equalTo("no_jk",i).findFirst();
+        if (cm!=null){
+            txtMakul.setText(cm.getMakul_jk());
+            SimpleDateFormat sdp = new SimpleDateFormat("HH:mm");
+            txtJam.setText(sdp.format(cm.getWaktu_jk())+" - "+sdp.format(cm.getWaktu_jkf()));
+            txtDosen.setText(cm.getDosen_jk());
+            txtRuangan.setText(cm.getRuangan_jk());
+            txtKelas.setText(cm.getKelas_jk());
+            nohari = cm.getNohari();
+            dates = cm.getWaktu_jk();
+            datef = cm.getWaktu_jkf();
+            spHari.setSelection(cm.getNohari() - 1);
         }
     }
     private void TimePicker(){
@@ -216,5 +239,12 @@ public class frmJadwalKuliah extends Fragment implements AdapterView.OnItemSelec
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+    }
+    public void clear(){
+        txtJam.setText("");
+        txtDosen.setText("");
+        txtMakul.setText("");
+        txtKelas.setText("");
+        txtRuangan.setText("");
     }
 }

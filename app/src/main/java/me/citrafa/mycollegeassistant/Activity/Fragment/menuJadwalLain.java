@@ -68,7 +68,7 @@ public class menuJadwalLain extends Fragment {
         realm = Realm.getDefaultInstance();
         data = realm.where(JadwalLainModel.class).equalTo("status_jl",true).findAll();
         jadwalLainModels = realm.where(JadwalLainModel.class).equalTo("status_jl",true).findAll();
-        adapter = new AdapterJadwalLainRV(getActivity(),data,jadwalLainModels);
+        adapter = new AdapterJadwalLainRV(this,getActivity(),data,jadwalLainModels);
         final LinearLayoutManager layout = new LinearLayoutManager(getActivity());
         layout.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layout);

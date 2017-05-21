@@ -50,6 +50,10 @@
             android:textSize="16sp"
             android:id="@+id/txtWaktuJU"
             style="@style/myEditTextForm"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:editable="false"
             android:hint="Waktu Ujian"/>
         <me.citrafa.mycollegeassistant.CustomWidget.etMuseo
             android:layout_width="match_parent"

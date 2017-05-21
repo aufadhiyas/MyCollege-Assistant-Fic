@@ -1,6 +1,5 @@
 package me.citrafa.mycollegeassistant.Activity.Fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -77,7 +76,7 @@ public class menuCatatan extends Fragment {
         realm = Realm.getDefaultInstance();
         data = realm.where(CatatanModel.class).equalTo("status",true).findAll();
         catatanModels = realm.where(CatatanModel.class).equalTo("status",true).findAll();
-        adapter = new AdapterCatatanRV(getActivity(),data,catatanModels);
+        adapter = new AdapterCatatanRV(this,data,catatanModels);
         final LinearLayoutManager layout = new LinearLayoutManager(getActivity());
         layout.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layout);

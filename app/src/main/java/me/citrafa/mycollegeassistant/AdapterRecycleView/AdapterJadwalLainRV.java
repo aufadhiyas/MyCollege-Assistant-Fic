@@ -1,11 +1,9 @@
 package me.citrafa.mycollegeassistant.AdapterRecycleView;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.PopupMenu;
@@ -15,24 +13,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
-import io.realm.RealmBaseAdapter;
-import io.realm.RealmList;
 import io.realm.RealmRecyclerViewAdapter;
 import io.realm.RealmResults;
 import me.citrafa.mycollegeassistant.Activity.Fragment.frmJadwalLain;
-import me.citrafa.mycollegeassistant.Activity.Fragment.frmCatatan;
 import me.citrafa.mycollegeassistant.Activity.Fragment.menuJadwalLain;
 import me.citrafa.mycollegeassistant.CustomWidget.tvMuseo;
 import me.citrafa.mycollegeassistant.ModelClass.JadwalLainModel;
@@ -53,10 +44,10 @@ public class AdapterJadwalLainRV extends RealmRecyclerViewAdapter<JadwalLainMode
     JadwalLainOperation jlo;
 
 
-    public AdapterJadwalLainRV(Context context,OrderedRealmCollection<JadwalLainModel> data, RealmResults<JadwalLainModel> jlm) {
+    public AdapterJadwalLainRV(menuJadwalLain mjl,Context context, OrderedRealmCollection<JadwalLainModel> data, RealmResults<JadwalLainModel> jlm) {
         super(data, true);
         this.jlm = jlm;
-        mjl = new menuJadwalLain();
+        this.mjl = mjl;
         setHasStableIds(true);
         realm = Realm.getDefaultInstance();
         jlo=new JadwalLainOperation();
@@ -155,7 +146,7 @@ public class AdapterJadwalLainRV extends RealmRecyclerViewAdapter<JadwalLainMode
             switch (menuItem.getItemId()){
                 case R.id.MenuJLUbah:
                     Bundle bundle = new Bundle();
-                    bundle.putInt("noJL", no);
+                    bundle.putInt("idJL", no);
                     frmJadwalLain fragment_frmJadwalLain = new frmJadwalLain();
                     fragment_frmJadwalLain.setArguments(bundle);
                     mjl.getFragmentManager().beginTransaction().replace(R.id.fragmentmenuJadwalLain, fragment_frmJadwalLain).addToBackStack(null).commit();

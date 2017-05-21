@@ -1,12 +1,12 @@
 package me.citrafa.mycollegeassistant.Activity.Fragment;
 
-import android.content.Intent;
-import android.graphics.Paint;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;;
 import android.content.Context;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,12 +18,12 @@ import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.Sort;
-
 import me.citrafa.mycollegeassistant.AdapterRecycleView.AdapterJadwalKuliahNew;
-
 import me.citrafa.mycollegeassistant.ModelClass.JadwalKuliahModel;
 import me.citrafa.mycollegeassistant.OperationRealm.RealmController;
 import me.citrafa.mycollegeassistant.R;
+
+;
 
 /**
  * Created by SENSODYNE on 13/04/2017.
@@ -50,7 +50,7 @@ public class menuJadwalKuliah extends Fragment{
 
     private String mParam1;
     private String mParam2;
-
+    FragmentManager fm;
     private OnFragmentInteractionListener mListener;
 
     public menuJadwalKuliah() {
@@ -82,7 +82,7 @@ public class menuJadwalKuliah extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         this.realm = RealmController.with(getActivity()).getRealm();
-
+        fm = getFragmentManager();
         realm.getDefaultInstance();
         View rootView = inflater.inflate(R.layout.fragment_menu_jadwal_kuliah, container, false);
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerjk);
@@ -109,6 +109,12 @@ public class menuJadwalKuliah extends Fragment{
         });
                 recyclerView.setHasFixedSize(true);
         Log.d(TAG, "TAG : OnCreateView Fragment");
+        fm.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                fab.show();
+            }
+        });
         return rootView;
     }
 

@@ -16,9 +16,7 @@ import butterknife.ButterKnife;
 import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
 import io.realm.RealmResults;
-import me.citrafa.mycollegeassistant.AdapterRecycleView.AdapterJadwalLainRV;
 import me.citrafa.mycollegeassistant.AdapterRecycleView.AdapterJadwalUjianRV;
-import me.citrafa.mycollegeassistant.ModelClass.JadwalLainModel;
 import me.citrafa.mycollegeassistant.ModelClass.JadwalUjianModel;
 import me.citrafa.mycollegeassistant.R;
 
@@ -75,7 +73,7 @@ public class menuJadwalUjian extends Fragment {
         realm = Realm.getDefaultInstance();
         data = realm.where(JadwalUjianModel.class).equalTo("status_ju",true).findAll();
         jadwalUjianModels = realm.where(JadwalUjianModel.class).equalTo("status_ju",true).findAll();
-        adapter = new AdapterJadwalUjianRV(getActivity(),data,jadwalUjianModels);
+        adapter = new AdapterJadwalUjianRV(this,data,jadwalUjianModels);
         final LinearLayoutManager layout = new LinearLayoutManager(getActivity());
         layout.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layout);

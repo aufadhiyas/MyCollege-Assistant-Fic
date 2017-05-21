@@ -1,7 +1,6 @@
 package me.citrafa.mycollegeassistant.OperationRealm;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,7 +8,6 @@ import java.util.Date;
 
 import io.realm.Realm;
 import me.citrafa.mycollegeassistant.ModelClass.DateStorageModel;
-import me.citrafa.mycollegeassistant.ModelClass.JadwalKuliahModel;
 import me.citrafa.mycollegeassistant.ModelClass.TugasModel;
 
 /**

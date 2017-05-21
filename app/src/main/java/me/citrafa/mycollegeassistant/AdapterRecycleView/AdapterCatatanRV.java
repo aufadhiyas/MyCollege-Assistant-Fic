@@ -2,7 +2,6 @@ package me.citrafa.mycollegeassistant.AdapterRecycleView;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -14,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +22,6 @@ import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
 import io.realm.RealmRecyclerViewAdapter;
 import io.realm.RealmResults;
-
 import me.citrafa.mycollegeassistant.Activity.Fragment.frmCatatan;
 import me.citrafa.mycollegeassistant.Activity.Fragment.menuCatatan;
 import me.citrafa.mycollegeassistant.CustomWidget.tvMuseo;
@@ -44,14 +41,14 @@ public class AdapterCatatanRV extends RealmRecyclerViewAdapter<CatatanModel, Ada
     Realm realm;
     menuCatatan mc;
 
-    public AdapterCatatanRV(Context context,@Nullable OrderedRealmCollection<CatatanModel> data, RealmResults<CatatanModel> catatan) {
+    public AdapterCatatanRV(menuCatatan mc,@Nullable OrderedRealmCollection<CatatanModel> data, RealmResults<CatatanModel> catatan) {
         super(data, true);
         this.data = data;
         this.catatan = catatan;
         CO = new CatatanOperation();
-        mc = new menuCatatan();
+        this.mc = mc;
         realm = Realm.getDefaultInstance();
-        this.mContext = context;
+
 
     }
 
@@ -146,7 +143,7 @@ public class AdapterCatatanRV extends RealmRecyclerViewAdapter<CatatanModel, Ada
 
                 case R.id.MenuCUbah:
                     Bundle bundle = new Bundle();
-                    bundle.putInt("noCatatan",id);
+                    bundle.putInt("idC",id);
                     frmCatatan frm = new frmCatatan();
                     frm.setArguments(bundle);
                     mc.getFragmentManager()

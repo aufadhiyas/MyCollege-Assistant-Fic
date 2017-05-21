@@ -7,17 +7,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.AppCompatImageButton;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
-import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -26,13 +22,9 @@ import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
-import io.realm.RealmResults;
-import me.citrafa.mycollegeassistant.AdapterRecycleView.AdapterCatatanRV;
 import me.citrafa.mycollegeassistant.AppController.SessionManager;
 import me.citrafa.mycollegeassistant.CustomWidget.LibraryDateCustom;
-import me.citrafa.mycollegeassistant.CustomWidget.btnMuseo;
 import me.citrafa.mycollegeassistant.CustomWidget.etMuseo;
 import me.citrafa.mycollegeassistant.CustomWidget.tvMuseo;
 import me.citrafa.mycollegeassistant.ModelClass.CatatanModel;
@@ -64,8 +56,10 @@ public class frmCatatan extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        id = getArguments().getInt("noC");
+        id = getArguments().getInt("idC");
         CO = new CatatanOperation();
+        LDC = new LibraryDateCustom();
+
         session = new SessionManager(getActivity());
         LDC = new LibraryDateCustom();
         View view =  inflater.inflate(R.layout.fragment_frm_catatan, container, false);
@@ -76,6 +70,9 @@ public class frmCatatan extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        if (id!=0) {
+            initData(id);
+        }
         txtWaktu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,9 +99,25 @@ public class frmCatatan extends Fragment {
         if (idn == 0){
             CatatanModel cm = new CatatanModel(ids,uuid(),Nama,Deskripsi,Dates,attLink,Author,true,created_at,updated_at);
             CO.tambahCatatan(cm);
+            getActivity().getFragmentManager().popBackStack();
         }else{
             CatatanModel cm = new CatatanModel(ids,Nama,Deskripsi,Dates,attLink,Author,true,updated_at);
             CO.updateCatatan(cm);
+            getActivity().getFragmentManager().popBackStack();
+        }
+    }
+    private void initData(int i){
+        Realm realm;
+        realm = Realm.getDefaultInstance();
+        CatatanModel cm = realm.where(CatatanModel.class).equalTo("no_c",i).findFirst();
+        if (cm!=null){
+            txtNama.setText(cm.getNama_c());
+            txtWaktu.setText(LDC.getHariDariWaktu(cm.getWaktu_c())+" "+LDC.getWaktuTanggalBiasa(cm.getWaktu_c()));
+            Dates = cm.getWaktu_c();
+            txtDeskripsi.setText(cm.getDeskripsi_c());
+            if (cm.getAttlink_c()!=null){
+                lblFile.setText(cm.getAttlink_c());
+            }
         }
     }
 

@@ -2,21 +2,17 @@ package me.citrafa.mycollegeassistant.AdapterRecycleView;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,12 +28,9 @@ import me.citrafa.mycollegeassistant.Activity.Fragment.menuTugas;
 import me.citrafa.mycollegeassistant.CustomWidget.LibraryDateCustom;
 import me.citrafa.mycollegeassistant.CustomWidget.tvMuseo;
 import me.citrafa.mycollegeassistant.ModelClass.JadwalKuliahModel;
-import me.citrafa.mycollegeassistant.ModelClass.JadwalLainModel;
 import me.citrafa.mycollegeassistant.ModelClass.TugasModel;
 import me.citrafa.mycollegeassistant.OperationRealm.TugasOperation;
 import me.citrafa.mycollegeassistant.R;
-
-import static java.lang.String.valueOf;
 
 /**
  * Created by SENSODYNE on 27/04/2017.
@@ -55,7 +48,7 @@ public class AdapterTugasRV extends RealmRecyclerViewAdapter<TugasModel, Adapter
     menuTugas t;
     LibraryDateCustom ldc;
 
-    public AdapterTugasRV(@Nullable OrderedRealmCollection<TugasModel> data
+    public AdapterTugasRV(menuTugas t,@Nullable OrderedRealmCollection<TugasModel> data
             , RealmResults<TugasModel> tugasModels) {
 
         super(data, true);
@@ -64,7 +57,7 @@ public class AdapterTugasRV extends RealmRecyclerViewAdapter<TugasModel, Adapter
         ldc = new LibraryDateCustom();
         this.tugasModels = tugasModels;
         yo = new TugasOperation();
-        t = new menuTugas();
+        this.t = t;
 
     }
 
@@ -90,7 +83,7 @@ public class AdapterTugasRV extends RealmRecyclerViewAdapter<TugasModel, Adapter
 
         realm = Realm.getDefaultInstance();
         final JadwalKuliahModel jk = realm.where(JadwalKuliahModel.class).equalTo("Tugas.no_t",tm.getNo_t()).findFirst();
-        holder.txt1.setText(jk.getMakul_jk());
+//        holder.txt1.setText(jk.getMakul_jk());
         SimpleDateFormat dateTime = new SimpleDateFormat(" dd/MM - HH:mm");
 
         if (tm.getWaktu_t() !=null){

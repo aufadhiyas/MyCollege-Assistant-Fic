@@ -8,13 +8,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.AppCompatImageButton;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.Switch;
@@ -34,7 +32,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
 import me.citrafa.mycollegeassistant.AppController.SessionManager;
-import me.citrafa.mycollegeassistant.CustomWidget.btnMuseo;
+import me.citrafa.mycollegeassistant.CustomWidget.LibraryDateCustom;
 import me.citrafa.mycollegeassistant.CustomWidget.etMuseo;
 import me.citrafa.mycollegeassistant.CustomWidget.tvMuseo;
 import me.citrafa.mycollegeassistant.ModelClass.JadwalKuliahModel;
@@ -64,6 +62,8 @@ public class frmTugas extends Fragment {
     int idt,idjk,mYear,mMonth,mDay,mHour,mMinute;String deskripsi,attlink,author;
     Date dateS,update,create;
     Realm realm;
+    LibraryDateCustom LDC;
+    FragmentManager fm;
 
 
 
@@ -75,6 +75,7 @@ public class frmTugas extends Fragment {
         session = new SessionManager(getActivity());
         TO = new TugasOperation();
         realm = Realm.getDefaultInstance();
+        LDC = new LibraryDateCustom();
         return inflater.inflate(R.layout.fragment_frm_tugas, container, false);
     }
 
@@ -82,6 +83,10 @@ public class frmTugas extends Fragment {
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this,view);
+        if (idt!=0){
+            initData(idt,idjk);
+        }
+        fm = getFragmentManager();
         txtWaktu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,6 +114,7 @@ public class frmTugas extends Fragment {
                 simpanData(idt);
             }
         });
+
     }
 
     @Override
@@ -135,12 +141,32 @@ public class frmTugas extends Fragment {
         create = getCurrentTimeStamp();
         if (ids==0){
             TugasModel tm = new TugasModel(ids,uuid(),deskripsi,attlink,dateS,true,author,create,update);
+            JadwalKuliahModel jk = realm.where(JadwalKuliahModel.class).equalTo("no_jk",idjk).findFirst();
+            jk.Tugas.add(tm);
             TO.TambahData(tm);
             Toast.makeText(getActivity(), "Data Berhasil Disimpan!!", Toast.LENGTH_SHORT).show();
+            getActivity().getFragmentManager().popBackStack();
         }else {
             TugasModel tm = new TugasModel(ids,deskripsi,attlink,dateS,true,author,update);
             TO.updatedata(tm);
             Toast.makeText(getActivity(), "Data Berhasil Diubah!!", Toast.LENGTH_SHORT).show();
+            getActivity().getFragmentManager().popBackStack();
+        }
+    }
+    private void initData(int i,int j){
+        Realm realm;
+        realm = Realm.getDefaultInstance();
+        TugasModel t = realm.where(TugasModel.class).equalTo("no_t",i).findFirst();
+        if (t!=null){
+            if (t.getWaktu_t()!=null){
+                txtWaktu.setText(LDC.getHariDariWaktu(t.getWaktu_t())+" "+LDC.getHariDariWaktu(t.getWaktu_t()));
+            }
+            txtDeskripsi.setText(t.getDeskripsi_t());
+            if (t.getAttlink_t()!=null){
+                lblFile.setText(t.getAttlink_t());
+            }
+            initDataJK();
+
         }
     }
     public void initDataJK(){

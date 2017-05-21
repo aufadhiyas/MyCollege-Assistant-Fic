@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="me.citrafa.mycollegeassistant">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -62,6 +63,8 @@
             </intent-filter>
         </receiver>
         <activity android:name=".Setting"></activity>
+        <service android:name=".Service.GPSTracker" android:exported="false"/>
+        <service android:name=".Service.LocalService" android:exported="false"/>
     </application>
 
 </manifest>

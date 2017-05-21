@@ -14,12 +14,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -29,8 +25,10 @@ import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.Realm;
 import me.citrafa.mycollegeassistant.AppController.SessionManager;
 import me.citrafa.mycollegeassistant.CustomWidget.AdapterSpinner;
+import me.citrafa.mycollegeassistant.CustomWidget.LibraryDateCustom;
 import me.citrafa.mycollegeassistant.CustomWidget.etMuseo;
 import me.citrafa.mycollegeassistant.ModelClass.JadwalUjianModel;
 import me.citrafa.mycollegeassistant.OperationRealm.JadwalUjianOperation;
@@ -49,6 +47,7 @@ public class frmJadwalUjian extends Fragment implements AdapterView.OnItemSelect
     @BindView(R.id.btnSimpanJu) FloatingActionButton btnSimpan;
     JadwalUjianOperation JUO;
     SessionManager session;
+    LibraryDateCustom LDC;
     String[] item= {"PRETEST","PASTTEST","UTS","UAS"};
 
     int id,mYear,mMonth,mDay,mHour,mMinute; String Jenis,Jenisie,nama,desskripsi,ruangan,author;
@@ -60,7 +59,7 @@ public class frmJadwalUjian extends Fragment implements AdapterView.OnItemSelect
         id = getArguments().getInt("idJU",0);
         session = new SessionManager(getActivity());
         JUO = new JadwalUjianOperation();
-
+        LDC = new LibraryDateCustom();
 
         return inflater.inflate(R.layout.fragment_frm_jadwal_ujian, container, false);
 
@@ -71,6 +70,9 @@ public class frmJadwalUjian extends Fragment implements AdapterView.OnItemSelect
         super.onViewCreated(view, savedInstanceState);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         ButterKnife.bind(this,view);
+        if (id!=0){
+            initData(id);
+        }
         AdapterSpinner ap = new AdapterSpinner(getActivity(),item);
         spJenisUjian.setAdapter(ap);
         spJenisUjian.setOnItemSelectedListener(this);
@@ -105,6 +107,18 @@ public class frmJadwalUjian extends Fragment implements AdapterView.OnItemSelect
         }
 
     }
+
+    private void initData(int i){
+        Realm realm;
+        realm = Realm.getDefaultInstance();
+        JadwalUjianModel ju = realm.where(JadwalUjianModel.class).equalTo("no_ju",i).findFirst();
+        txtNama.setText(ju.getNama_makul());
+        txtDeskripsi.setText(ju.getDeskripsi());
+        txtRuangan.setText(ju.getRuangan());
+        txtWaktu.setText(LDC.getHariDariWaktu(ju.getWaktu())+" "+LDC.getWaktuTanggalBiasa(ju.getWaktu()));
+        dateS = ju.getWaktu();
+    }
+
     public static Date getCurrentTimeStamp(){
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//dd/MM/yyyy
         Date now = new Date();

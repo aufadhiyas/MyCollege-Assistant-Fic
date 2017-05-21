@@ -14,8 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,7 +22,6 @@ import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
 import io.realm.RealmRecyclerViewAdapter;
 import io.realm.RealmResults;
-
 import me.citrafa.mycollegeassistant.Activity.Dashboard;
 import me.citrafa.mycollegeassistant.Activity.Fragment.frmJadwalUjian;
 import me.citrafa.mycollegeassistant.Activity.Fragment.menuJadwalUjian;
@@ -46,12 +43,12 @@ public class AdapterJadwalUjianRV extends RealmRecyclerViewAdapter<JadwalUjianMo
     Context context;
     Dashboard db;
 
-    public AdapterJadwalUjianRV(Context context,@Nullable OrderedRealmCollection<JadwalUjianModel> data,RealmResults<JadwalUjianModel>JUM) {
+    public AdapterJadwalUjianRV(menuJadwalUjian mju, @Nullable OrderedRealmCollection<JadwalUjianModel> data, RealmResults<JadwalUjianModel>JUM) {
         super(data, true);
         setHasStableIds(true);
         realm = Realm.getDefaultInstance();
         this.jadwalUjianModels = JUM;
-        mju = new menuJadwalUjian();
+        this.mju = mju;
         juo = new JadwalUjianOperation();
         db = new Dashboard();
 
@@ -135,12 +132,12 @@ public class AdapterJadwalUjianRV extends RealmRecyclerViewAdapter<JadwalUjianMo
             switch (menuItem.getItemId()){
                 case R.id.menuJUubah:
                     Bundle bundle = new Bundle();
-                    bundle.putInt("noJU",no);
+                    bundle.putInt("idJU",no);
                     frmJadwalUjian frm = new frmJadwalUjian();
                     frm.setArguments(bundle);
 //                    if (mju!=null){
 //                        Toast.makeText(mContext, "Tidak Null", Toast.LENGTH_SHORT).show();
-                        mju.getFragmentManager().beginTransaction().replace(R.id.fragmentmenuJadwalUjian, frm).addToBackStack(null).commit();
+                    mju.getFragmentManager().beginTransaction().replace(R.id.fragmentmenuJadwalUjian, frm).addToBackStack(null).commit();
 //                    }else {
 //                 db.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentmenuJadwalUjian, frm).addToBackStack(null).commit();
 //                    }

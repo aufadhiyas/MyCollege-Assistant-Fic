@@ -2,7 +2,6 @@ package me.citrafa.mycollegeassistant.AdapterRecycleView;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -16,9 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,13 +23,11 @@ import io.realm.OrderedRealmCollection;
 import io.realm.Realm;
 import io.realm.RealmRecyclerViewAdapter;
 import io.realm.RealmResults;
-
 import me.citrafa.mycollegeassistant.Activity.Fragment.frmJadwalKuliah;
 import me.citrafa.mycollegeassistant.Activity.Fragment.frmTugas;
 import me.citrafa.mycollegeassistant.Activity.Fragment.menuJadwalKuliah;
 import me.citrafa.mycollegeassistant.CustomWidget.tvMuseo;
 import me.citrafa.mycollegeassistant.ModelClass.JadwalKuliahModel;
-import me.citrafa.mycollegeassistant.ModelClass.JadwalLainModel;
 import me.citrafa.mycollegeassistant.OperationRealm.JadwalKuliahOperation;
 import me.citrafa.mycollegeassistant.R;
 
@@ -165,9 +159,11 @@ public class AdapterJadwalKuliahNew extends RealmRecyclerViewAdapter<JadwalKulia
                     mj.getFragmentManager().beginTransaction().add(R.id.tabJadwalKuliah,f).addToBackStack(null).commit();
                     break;
                 case R.id.MenuJKUbah:
-                    Intent edit = new Intent(mContext,frmJadwalKuliah.class);
-                    edit.putExtra("id",id);
-                    mContext.startActivity(edit);
+                    Bundle bundles = new Bundle();
+                    bundles.putInt("noJK",id);
+                    frmJadwalKuliah l= new frmJadwalKuliah();
+                    l.setArguments(bundles);
+                    mj.getFragmentManager().beginTransaction().add(R.id.tabJadwalKuliah,l).addToBackStack(null).commit();
                     break;
                 case R.id.MenuJKHapus:
 
